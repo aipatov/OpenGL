@@ -3,7 +3,14 @@ cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
 set(PROJECT_NAME openGL)
 project(${PROJECT_NAME})
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+
+add_executable(${PROJECT_NAME} 
+	src/main.cpp
+	src/Renderer/ShaderProgram.cpp
+	src/Renderer/ShaderProgram.h
+	)
+
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
