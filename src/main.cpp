@@ -1,5 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/vec2.hpp>
+
 #include <iostream>
 #include "Renderer/ShaderProgram.h"
 #include "Resources/ResourceManager.h"
@@ -23,15 +25,13 @@ GLfloat textCoord[] = {
        0.0f, 0.0f,
 };
 
-
-int g_winSizeX = 640;
-int g_winSizeY = 480;
+glm::ivec2 g_winSize(640, 480);
 
 void glfwWindowSizeCallback(GLFWwindow* pWindow, int width, int height)
 {
-    g_winSizeX = width;
-    g_winSizeY = height;
-    glViewport(0, 0, g_winSizeX / 2, g_winSizeY);
+    g_winSize.x = width;
+    g_winSize.y = height;
+    glViewport(0, 0, g_winSize.x / 2, g_winSize.y);
 }
 
 void glfwKeyCallback(GLFWwindow* pWindow, int key, int scancode, int action, int mode)
@@ -56,7 +56,7 @@ int main(int argc, char** argv)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     /* Create a windowed mode window and its OpenGL context */
-    GLFWwindow* pWindow = glfwCreateWindow(g_winSizeX, g_winSizeY, "OpenGL", nullptr, nullptr);
+    GLFWwindow* pWindow = glfwCreateWindow(g_winSize.x, g_winSize.y, "OpenGL", nullptr, nullptr);
     if (!pWindow)
     {
         std::cout << " glfwCreateWindow failed!" << std::endl;
