@@ -29,9 +29,12 @@ namespace rd {
 	private:
 		std::shared_ptr<Texture2D> m_pTexture;
 		std::shared_ptr<ShaderProgram> m_pShaderProgram;
-		glm::vec2& m_position;
-		glm::vec2& m_size;
+		glm::vec2 m_position;
+		glm::vec2 m_size;
 		float m_rotation;
+		GLuint m_VAO;
+		GLuint m_vertexCoordsVBO;
+		GLuint m_textureCoordsVBO;
 	};
 }
 
